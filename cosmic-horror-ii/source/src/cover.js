@@ -46,15 +46,11 @@
     ctx.shadowColor = 'rgba(0,0,0,0.9)'; ctx.shadowBlur = 14;
     ctx.fillText('COSMIC HORROR', W / 2 + 15, 548);
     ctx.fillStyle = 'rgba(160,195,255,0.9)'; ctx.fillRect(W / 2 - 90, 584, 180, 2);
-    // hook line
-    ctx.font = '62px "SerifB"'; ctx.letterSpacing = '8px';
-    ctx.shadowColor = 'rgba(255,190,130,0.55)'; ctx.shadowBlur = 26;
+    // single warm subtitle
+    ctx.font = '64px "SerifB"'; ctx.letterSpacing = '12px';
+    ctx.shadowColor = 'rgba(255,190,130,0.6)'; ctx.shadowBlur = 28;
     ctx.fillStyle = 'rgb(255,236,214)';
-    ctx.fillText('它甚至从未注意过我们', W / 2 + 4, 686);
-    // subtitle
-    ctx.shadowColor = 'rgba(0,0,0,0.95)'; ctx.shadowBlur = 14;
-    ctx.font = '36px "SerifL"'; ctx.letterSpacing = '12px'; ctx.fillStyle = 'rgba(214,224,240,0.95)';
-    ctx.fillText('当宇宙不再以人类为中心', W / 2 + 6, 760);
+    ctx.fillText('人类在宇宙中毫无意义', W / 2 + 6, 712);
     ctx.restore();
 
     // 5) the tiny human with a warm light (bottom-centre, kept away from B站's bottom-right duration badge)
