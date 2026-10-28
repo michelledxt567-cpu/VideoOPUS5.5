@@ -86,5 +86,6 @@
     if (pending.length) await window.nodeVideo(JSON.stringify(pending.splice(0).map(([ts, k, d]) => [ts, k, u8ToB64(d)])));
     return true;
   }
-  window.APP = { init, still, sheet, renderFrame, encodeAudio, encodeVideo };
+  function renderFrameRaw(t) { const keep = TL.CUES, kl = TL.LABELS; TL.CUES = []; TL.LABELS = []; try { renderFrame(t); } finally { TL.CUES = keep; TL.LABELS = kl; } }
+  window.APP = { renderFrameRaw, init, still, sheet, renderFrame, encodeAudio, encodeVideo };
 })();

@@ -59,6 +59,12 @@ if (mode === 'stills') {
   const f = path.join(OUT, 'stills', `sheet_${process.argv[4] || 'x'}.jpg`);
   fs.writeFileSync(f, Buffer.from(url.split(',')[1], 'base64'));
   console.log('sheet', f);
+} else if (mode === 'cover') {
+  const r = await page.evaluate(t => window.COVER.make({ bgT: t }), Number(process.argv[3] || 86.5));
+  const dir = path.join(OUT, 'cover'); fs.mkdirSync(dir, { recursive: true });
+  const w = (n, u) => fs.writeFileSync(path.join(dir, n), Buffer.from(u.split(',')[1], 'base64'));
+  w('cover_16x9.png', r.full); w('cover_16x9.jpg', r.jpg); w('cover_4x3.jpg', r.c43); w('cover_guide.jpg', r.guide);
+  console.log('cover written', dir);
 } else if (mode === 'audio') {
   const a = await page.evaluate(() => window.APP.encodeAudio());
   console.log('audio chunks', a.count, 'desc', a.desc);
