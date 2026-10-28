@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>宇宙恐怖 · Cosmic Horror</title>
+<style>
+html,body{margin:0;height:100%;background:#000;color:#fff;font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",sans-serif}
+.wrap{position:relative;width:100vw;max-width:calc(100vh*16/9);aspect-ratio:16/9;margin:auto;top:50%;transform:translateY(-50%)}
+video{width:100%;height:100%;display:block;background:#000}
+#cap{position:absolute;left:0;right:0;bottom:8.5%;text-align:center;font-size:clamp(14px,2.3vw,44px);letter-spacing:.12em;
+ text-shadow:0 0 12px #000,0 0 4px #000;pointer-events:none;transition:opacity .25s,transform .4s;opacity:0}
+#start{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6);cursor:pointer;font-size:22px;letter-spacing:.3em}
+</style></head><body>
+<div class="wrap"><video id="v" src="cosmic_horror.webm" preload="auto" playsinline controls></video><div id="cap"></div>
+<div id="start">▶ 点击播放（建议佩戴耳机）</div></div>
+<script>
+const CAPS=[[0.8,3.8,"抬头仰望夜空时，你看到的是什么？"],[4.2,7.6,"其实，你正在凝视一片深渊。"],[8.6,10.6,"地球，直径约一万两千公里。"],[11.7,14,"光从太阳出发，要四个多小时才能抵达海王星。"],[15.4,18.4,"银河系，直径约十万光年，拥有数千亿颗恒星。"],[19.8,21.8,"可观测宇宙，直径约930亿光年。"],[21.9,23.7,"银河系，只是其中数千亿个星系之一。"],[24.6,27.8,"星光，需要时间才能穿越这片黑暗。"],[28.6,31.4,"你今晚看到的星光，可能在几百年前就已出发。"],[32.4,36.8,"而发出它的那颗恒星，也许早已死去。"],[38.8,41.7,"黑洞——连光都无法逃脱的地方。"],[42,45.6,"TON 618，质量约为太阳的660亿倍。"],[46,49.6,"它的视界半径约1300天文单位，是海王星轨道的40多倍。"],[50,53.5,"越靠近它，时间流逝得越慢……越过视界，再无归途。"],[55,58.3,"比黑洞更让人不安的，是“什么都没有”。"],[58.7,62.2,"牧夫座空洞，直径约3.3亿光年，其中只发现了约60个星系。"],[62.5,64.9,"如果银河系位于它的中心，"],[65,67.6,"直到1960年代，人类都不会知道还有别的星系。"],[68.8,71.8,"宇宙正在加速膨胀。"],[72.1,75.6,"遥远的星系将逐个退出视界，永远无法再被看见。"],[76,78.8,"约百万亿年后，最后一颗恒星也将熄灭。"],[79,81.8,"最终，宇宙将归于永恒的黑暗与寂静。"],[83.2,85.9,"但在这片无边的黑暗里，有一颗暗淡的蓝点。"],[86.2,89.4,"那里的生命，学会了仰望星空。"]];
+const v=document.getElementById('v'),cap=document.getElementById('cap'),st=document.getElementById('start');
+st.onclick=()=>{st.remove();v.play();};
+let cur=-1;
+(function loop(){const t=v.currentTime;let k=CAPS.findIndex(c=>t>=c[0]&&t<c[1]);
+ if(k!==cur){cur=k;if(k<0){cap.style.opacity=0;}else{cap.textContent=CAPS[k][2];cap.style.opacity=1;cap.style.transform='translateY(6px)';requestAnimationFrame(()=>cap.style.transform='translateY(0)');}}
+ requestAnimationFrame(loop);})();
+</script></body></html>
